@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-4">
+    <ul class="list-group">
+      <li class="list-group-item active-module"> modules </li>
+      <li *ngFor="let module of modules"
+          [ngClass]="{'active-element': params.moduleId == module.id}"
+          class="list-group-item web-dev">
+        <a routerLink="/course/{{courseId}}/module/{{module.id}}/">
+          {{module.title}}
+        </a>
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="col-8">
+    <app-lesson-tabs></app-lesson-tabs>
+  </div>
+
+</div>
+
