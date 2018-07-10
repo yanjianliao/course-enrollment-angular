@@ -3,16 +3,19 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { CourseGridComponent } from './course-grid/course-grid.component';
+import CourseServiceClient from './services/course.service.client';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CourseGridComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [CourseServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
