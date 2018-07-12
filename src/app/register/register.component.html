@@ -1,0 +1,22 @@
+<h1>Register</h1>
+
+<input [(ngModel)]="username"
+       placeholder="username"
+       class="form-control"
+/>
+<input [(ngModel)]="password"
+       placeholder="password"
+       class="form-control"
+/>
+
+<input [(ngModel)]="password2"
+       placeholder="password"
+       class="form-control"
+/>
+
+
+<button (click)="createUser()"
+        class="btn btn-success"
+>
+  Register
+</button>

@@ -11,6 +11,10 @@ import { ModuleListComponent } from './module-list/module-list.component';
 import ModuleServiceClient from './services/module.service.client';
 import { LessonTabsComponent } from './lesson-tabs/lesson-tabs.component';
 import {LessonServiceClient} from './services/lesson.service.client';
+import { RegisterComponent } from './register/register.component';
+import UserServiceClient from './services/user.service.client';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -21,6 +25,9 @@ import {LessonServiceClient} from './services/lesson.service.client';
     CourseViewerComponent,
     ModuleListComponent,
     LessonTabsComponent,
+    RegisterComponent,
+    LoginComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +37,8 @@ import {LessonServiceClient} from './services/lesson.service.client';
   providers: [
     CourseServiceClient,
     ModuleServiceClient,
-    LessonServiceClient
+    LessonServiceClient,
+    UserServiceClient
   ],
   bootstrap: [AppComponent]
 })
