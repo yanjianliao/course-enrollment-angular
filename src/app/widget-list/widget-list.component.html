@@ -1,0 +1,42 @@
+
+<div *ngFor="let widget of widgets">
+
+
+  <div class="row">
+    <h3 class="col-4">{{widget.name}}</h3>
+    <p><em>({{widget.widgetType}} widget)</em></p>
+  </div>
+  <div *ngIf="widget.widgetType == 'Heading'">
+    <h1 *ngIf="widget.size == '1'">{{widget.text}}</h1>
+    <h2 *ngIf="widget.size == '2'">{{widget.text}}</h2>
+    <h3 *ngIf="widget.size == '3'">{{widget.text}}</h3>
+  </div>
+
+
+  <div *ngIf="widget.widgetType == 'List'">
+    <ol *ngIf="widget.listType == 'ordered' && widget.listItems">
+      <li *ngFor="let item of widget.listItems.split('\n')">
+        {{item}}
+      </li>
+    </ol>
+    <ul *ngIf="widget.listType == 'unordered' && widget.listItems">
+      <li *ngFor="let item of widget.listItems.split('\n')">
+        {{item}}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="widget.widgetType == 'Image'">
+    <img src="{{widget.src}}" alt="">
+  </div>
+
+  <div *ngIf="widget.widgetType == 'Link'">
+    <a href="{{widget.href}}">{{widget.text}}</a>
+  </div>
+
+  <div *ngIf="widget.widgetType == 'Paragraph'">
+    {{widget.text}}
+  </div>
+
+  <hr>
+</div>

@@ -16,7 +16,6 @@ const appRoutes: Routes = [
   { path: 'course/:courseId/section', component: SectionListComponent},
   { path: 'course/:courseId', component: CourseViewerComponent},
   { path: 'register', component: RegisterComponent},
-
   { path: 'course/:courseId/module/:moduleId', component: CourseViewerComponent},
   { path: '**', component: WhiteBoardComponent}
 ];
