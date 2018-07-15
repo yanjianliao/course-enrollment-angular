@@ -14,16 +14,17 @@ export class LessonTabsComponent implements OnInit {
 
     this.route.params.subscribe(
       params => this.findLessonsForModule(params)
-    )
-
-
+    );
   }
+
+  params;
   moduleId: number;
   courseId: number;
   lessonId: number;
   lessons = [];
 
   findLessonsForModule(params) {
+    this.params = params;
     this.courseId = params.courseId;
     this.moduleId = params.moduleId;
     this.lessonId = params.lessonId;

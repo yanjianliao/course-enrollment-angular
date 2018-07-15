@@ -1,0 +1,9 @@
+<div class="btn-group container" role="group" aria-label="Basic example">
+  <a  *ngFor="let topic of topics"
+      routerLink="/course/{{courseId}}/module/{{moduleId}}/lesson/{{lessonId}}/topic/{{topic.id}}">
+    <button [ngClass]="{'active-button': topic.id == params.topicId}"
+            class="btn btn-secondary">
+      {{topic.title}}
+    </button>
+  </a>
+</div>

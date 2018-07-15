@@ -15,6 +15,10 @@ import { RegisterComponent } from './register/register.component';
 import UserServiceClient from './services/user.service.client';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SectionListComponent } from './section-list/section-list.component';
+import SectionServiceClient from './services/section.service.client';
+import { TopicListsComponent } from './topic-lists/topic-lists.component';
+import TopicServiceClient from './services/topic.service.client';
 
 
 @NgModule({
@@ -28,6 +32,8 @@ import { ProfileComponent } from './profile/profile.component';
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
+    SectionListComponent,
+    TopicListsComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,9 @@ import { ProfileComponent } from './profile/profile.component';
     CourseServiceClient,
     ModuleServiceClient,
     LessonServiceClient,
-    UserServiceClient
+    UserServiceClient,
+    TopicServiceClient,
+    SectionServiceClient
   ],
   bootstrap: [AppComponent]
 })
