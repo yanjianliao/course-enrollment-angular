@@ -50,5 +50,23 @@ export default class SectionServiceClient {
     });
   }
 
+  deleteSection(sectionId) {
+    return fetch(this.BASE_URL + 'section/' + sectionId, {
+      method: 'delete',
+      credentials: 'include'
+    });
+  }
+
+  updateSection(section) {
+    return fetch(this.BASE_URL + 'section/' + section._id, {
+      method: 'put',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(section),
+    });
+  }
+
 
 }

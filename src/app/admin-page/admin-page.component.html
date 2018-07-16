@@ -1,3 +1,88 @@
-<p>
-  admin-page works!
-</p>
+<h3> Input new Section information here</h3>
+<div class="form-group row">
+    <label for="sectionName" class="col-sm-2 col-form-label">
+      <strong>name</strong>
+    </label>
+    <div class="col-sm-10">
+      <input placeholder="Section Name"
+             [(ngModel)]="sectionName"
+             id="sectionName"
+             class="form-control">
+    </div>
+
+    <label for="seats" class="col-sm-2 col-form-label">
+      <strong>seats</strong>
+    </label>
+    <div class="col-sm-10">
+      <input placeholder="seats"
+             [(ngModel)]="seats"
+             id="seats"
+             class="form-control">
+    </div>
+
+
+
+</div>
+<hr>
+<h3>Edit selected Section information here</h3>
+<div class="form-group row">
+  <label for="newSectionName" class="col-sm-2 col-form-label">
+    <strong>newSectionName</strong>
+  </label>
+  <div class="col-sm-10">
+    <input placeholder="Section Name"
+           [(ngModel)]="newSectionName"
+           id="newSectionName"
+           class="form-control">
+  </div>
+
+  <label for="newSeats" class="col-sm-2 col-form-label">
+    <strong>newSeats</strong>
+  </label>
+  <div class="col-sm-10">
+    <input placeholder="seats"
+           [(ngModel)]="newSeats"
+           id="newSeats"
+           class="form-control">
+  </div>
+
+
+  <button class="btn btn-success btn-block" (click)="updateSection()">
+    save update for this section
+  </button>
+
+
+</div>
+
+<hr>
+
+<div *ngFor="let course of courses">
+
+  <h3>Course: {{course.title}}</h3>
+  <ul class="list-group">
+    <li *ngFor="let section of course.sections" class="list-group-item">
+      name : {{section.name}}
+      seats : {{section.seats}}
+      <button class="btn btn-danger float-right" (click)="deleteSection(section._id)">
+        delete
+      </button>
+      <button class="btn btn-primary float-right" (click)="selectSection(section)">
+        select to edit
+      </button>
+    </li>
+  </ul>
+
+
+
+  <button class="btn btn-success btn-block" (click)="createSection(course.id)">
+    add new sections for this course
+  </button>
+
+  <hr>
+</div>
+
+
+<div class="row float-right">
+  <a  routerLink="/profile"><h3>Profile</h3></a>
+  <a  routerLink="/home"><h3>Home</h3></a>
+</div>

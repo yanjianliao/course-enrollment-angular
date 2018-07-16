@@ -37,11 +37,6 @@ export class SectionListComponent implements OnInit {
       .then(sections => this.sections = sections);
   }
 
-  createSection() {
-    this.sectionService
-      .createSection(this.sectionName, this.seats, this.courseId)
-      .then(() => this.loadSection());
-  }
 
   enroll(section) {
     this.sectionService
