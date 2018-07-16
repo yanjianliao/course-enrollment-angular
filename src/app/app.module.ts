@@ -21,6 +21,7 @@ import { TopicListsComponent } from './topic-lists/topic-lists.component';
 import TopicServiceClient from './services/topic.service.client';
 import { WidgetListComponent } from './widget-list/widget-list.component';
 import WidgetServiceClient from './services/widget.service.client';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import WidgetServiceClient from './services/widget.service.client';
     SectionListComponent,
     TopicListsComponent,
     WidgetListComponent,
+    AdminPageComponent,
   ],
   imports: [
     BrowserModule,

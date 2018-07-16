@@ -43,4 +43,12 @@ export default class SectionServiceClient {
   }
 
 
+  dropSection(enrollment) {
+    return fetch(this.BASE_URL + 'student/' + enrollment.student + '/section/' + enrollment.section , {
+      method: 'delete',
+      credentials: 'include'
+    });
+  }
+
+
 }

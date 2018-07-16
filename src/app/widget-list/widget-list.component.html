@@ -1,11 +1,10 @@
-
 <div *ngFor="let widget of widgets">
-
 
   <div class="row">
     <h3 class="col-4">{{widget.name}}</h3>
     <p><em>({{widget.widgetType}} widget)</em></p>
   </div>
+
   <div *ngIf="widget.widgetType == 'Heading'">
     <h1 *ngIf="widget.size == '1'">{{widget.text}}</h1>
     <h2 *ngIf="widget.size == '2'">{{widget.text}}</h2>

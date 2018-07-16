@@ -1,0 +1,32 @@
+input {
+  margin-top: 20px;
+}
+label {
+  margin-top: 20px;
+}
+.btn-block {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.hidden {
+  background-color: black;
+}
+
+h1 {
+  text-align: center;
+}
+
+.active-module {
+  background-color: black;
+  color: white;
+}
+
+li{
+  text-align: center;
+}
+
+a{
+  margin: 10px;
+}
+

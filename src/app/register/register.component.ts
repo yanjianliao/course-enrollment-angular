@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import UserServiceClient from '../services/user.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {User} from '../models/user.model.client';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +25,16 @@ export class RegisterComponent implements OnInit {
     }
 
     this.userService.createUser(this.username, this.password)
-      .then(user => this.router.navigate(['profile']));
+      .then((user: User) => {
+
+        if (user.error) {
+          alert(user.error);
+          return;
+        }
+
+        this.router.navigate(['profile']);
+
+      });
 
   }
 

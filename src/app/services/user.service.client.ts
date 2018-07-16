@@ -14,7 +14,7 @@ export default class UserServiceClient {
       headers: {
         'content-type': 'application/json'
       }
-    });
+    }).then(response => response.json());
   }
 
   login(username, password) {
@@ -43,6 +43,29 @@ export default class UserServiceClient {
   logout() {
     return fetch(this.USER_URL + '/logout', {
       credentials: 'include'
+    });
+  }
+
+  updateProfile(user) {
+    return fetch(this.USER_URL + '/profile', {
+      method: 'put',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(user),
+    });
+  }
+
+  deleteProfile(user) {
+    console.log(this.USER_URL + '/profile');
+    return fetch(this.USER_URL + '/profile', {
+      method: 'delete',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(user),
     });
   }
 
