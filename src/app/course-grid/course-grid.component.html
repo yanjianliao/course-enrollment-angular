@@ -1,14 +1,6 @@
 <h2>Course grid {{courses.length}} </h2>
 
-<a routerLink="/login"
-   class="btn btn-primary">
-  Login
-</a>
 
-<a routerLink="/register"
-   class="btn btn-primary">
-  Register
-</a>
 
 <div class="row">
   <div *ngFor="let course of courses" class="col-sm-3">
@@ -25,3 +17,12 @@
     </div>
   </div>
 </div>
+
+
+<div class="row float-right">
+  <a  routerLink="/profile"><h3>Profile</h3></a>
+  <a  routerLink="/home"><h3>Home</h3></a>
+  <a routerLink="/login"><h3>Login</h3></a>
+  <a routerLink="/register"><h3>Register</h3></a>
+</div>
+

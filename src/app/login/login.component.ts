@@ -16,6 +16,12 @@ export class LoginComponent implements OnInit {
   }
 
   login(username, password) {
+
+    if (!password || !username) {
+      alert('Can not be empty');
+      return;
+    }
+
     this.userService.login(username, password)
       .then(user => {
         if (user.error) {

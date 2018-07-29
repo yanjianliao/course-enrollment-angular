@@ -60,8 +60,8 @@ export class AdminPageComponent implements OnInit {
   updateSection() {
     const newSection = this.selectedSection;
     newSection.name = this.newSectionName;
-    newSection.newSeats = this.newSeats;
-
+    newSection.seats = this.newSeats;
+    // console.log(newSection, this.newSeats);
     this.sectionService.updateSection(newSection)
       .then(() => this.findAllCourses());
 

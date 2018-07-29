@@ -58,6 +58,7 @@ export default class SectionServiceClient {
   }
 
   updateSection(section) {
+    // console.log(section);
     return fetch(this.BASE_URL + 'section/' + section._id, {
       method: 'put',
       credentials: 'include',
