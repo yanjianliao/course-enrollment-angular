@@ -1,6 +1,6 @@
 export default class SectionServiceClient {
-  SECTION_URL = 'http://localhost:3000/api/course/CID/section';
-  BASE_URL = 'http://localhost:3000/api/';
+  SECTION_URL = 'https://pacific-oasis-70306.herokuapp.com/api/course/CID/section';
+  BASE_URL = 'https://pacific-oasis-70306.herokuapp.com/api/';
 
   enrollStudentInSection(sectionId) {
     const url = this.BASE_URL + 'section/' + sectionId + '/enrollment';

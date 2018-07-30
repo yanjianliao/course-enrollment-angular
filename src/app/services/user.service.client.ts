@@ -1,6 +1,6 @@
 export default class UserServiceClient {
 
-  USER_URL = 'http://localhost:3000/api';
+  USER_URL = 'https://pacific-oasis-70306.herokuapp.com/api';
 
   createUser(username, password) {
     const user = {

@@ -1188,8 +1188,8 @@ var ModuleServiceClient = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 var SectionServiceClient = /** @class */ (function () {
     function SectionServiceClient() {
-        this.SECTION_URL = 'http://localhost:3000/api/course/CID/section';
-        this.BASE_URL = 'http://localhost:3000/api/';
+        this.SECTION_URL = 'https://pacific-oasis-70306.herokuapp.com/api/course/CID/section';
+        this.BASE_URL = 'https://pacific-oasis-70306.herokuapp.com/api/';
     }
     SectionServiceClient.prototype.enrollStudentInSection = function (sectionId) {
         var url = this.BASE_URL + 'section/' + sectionId + '/enrollment';
@@ -1289,7 +1289,7 @@ var TopicServiceClient = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 var UserServiceClient = /** @class */ (function () {
     function UserServiceClient() {
-        this.USER_URL = 'http://localhost:3000/api';
+        this.USER_URL = 'https://pacific-oasis-70306.herokuapp.com/api';
     }
     UserServiceClient.prototype.createUser = function (username, password) {
         var user = {
