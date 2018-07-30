@@ -41,7 +41,7 @@ module.exports = "a{\n  margin: 10px;\n}\n\nlabel{\n  margin-top: 10px;\n}\n\nin
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3> Input new Section information here</h3>\n<div class=\"form-group row\">\n    <label for=\"sectionName\" class=\"col-sm-2 col-form-label\">\n      <strong>name</strong>\n    </label>\n    <div class=\"col-sm-10\">\n      <input placeholder=\"Section Name\"\n             [(ngModel)]=\"sectionName\"\n             id=\"sectionName\"\n             class=\"form-control\">\n    </div>\n\n    <label for=\"seats\" class=\"col-sm-2 col-form-label\">\n      <strong>seats</strong>\n    </label>\n    <div class=\"col-sm-10\">\n      <input placeholder=\"seats\"\n             [(ngModel)]=\"seats\"\n             id=\"seats\"\n             class=\"form-control\">\n    </div>\n\n\n\n</div>\n<hr>\n<h3>Edit selected Section information here</h3>\n<div class=\"form-group row\">\n  <label for=\"newSectionName\" class=\"col-sm-2 col-form-label\">\n    <strong>newSectionName</strong>\n  </label>\n  <div class=\"col-sm-10\">\n    <input placeholder=\"Section Name\"\n           [(ngModel)]=\"newSectionName\"\n           id=\"newSectionName\"\n           class=\"form-control\">\n  </div>\n<!--<h1>{{newSeats}}</h1>-->\n  <label for=\"newSeats\" class=\"col-sm-2 col-form-label\">\n    <strong>newSeats</strong>\n  </label>\n  <div class=\"col-sm-10\">\n    <input placeholder=\"seats\"\n           [(ngModel)]=\"newSeats\"\n           id=\"newSeats\"\n           class=\"form-control\">\n  </div>\n\n\n  <button class=\"btn btn-primary btn-block\" (click)=\"updateSection()\">\n    save updates for this section\n  </button>\n\n\n</div>\n\n<hr>\n\n<div *ngFor=\"let course of courses\">\n\n  <h3>Course: {{course.title}}</h3>\n  <ul class=\"list-group\">\n    <li *ngFor=\"let section of course.sections\" class=\"list-group-item\">\n      name : {{section.name}}\n      seats : {{section.seats}}\n      <button class=\"btn btn-danger float-right\" (click)=\"deleteSection(section._id)\">\n        delete\n      </button>\n      <button class=\"btn btn-primary float-right\" (click)=\"selectSection(section)\">\n        select to edit\n      </button>\n    </li>\n  </ul>\n\n\n\n  <button class=\"btn btn-success btn-block\" (click)=\"createSection(course.id)\">\n    add new sections for this course\n  </button>\n\n  <hr>\n</div>\n\n\n<div class=\"row float-right\">\n  <a  routerLink=\"/profile\"><h3>Profile</h3></a>\n  <a  routerLink=\"/home\"><h3>Home</h3></a>\n</div>\n"
+module.exports = "<h3> Input new Section information here</h3>\n<div class=\"form-group row\">\n    <label for=\"sectionName\" class=\"col-sm-2 col-form-label\">\n      <strong>name</strong>\n    </label>\n    <div class=\"col-sm-10\">\n      <input placeholder=\"Default Section Name\"\n             [(ngModel)]=\"sectionName\"\n             id=\"sectionName\"\n             class=\"form-control\">\n    </div>\n\n    <label for=\"seats\" class=\"col-sm-2 col-form-label\">\n      <strong>seats</strong>\n    </label>\n    <div class=\"col-sm-10\">\n      <input placeholder=\"seats\"\n             [(ngModel)]=\"seats\"\n             id=\"seats\"\n             class=\"form-control\">\n    </div>\n\n\n\n</div>\n<hr>\n<h3>Edit selected Section information here</h3>\n<div class=\"form-group row\">\n  <label for=\"newSectionName\" class=\"col-sm-2 col-form-label\">\n    <strong>newSectionName</strong>\n  </label>\n  <div class=\"col-sm-10\">\n    <input placeholder=\"Section Name\"\n           [(ngModel)]=\"newSectionName\"\n           id=\"newSectionName\"\n           class=\"form-control\">\n  </div>\n<!--<h1>{{newSeats}}</h1>-->\n  <label for=\"newSeats\" class=\"col-sm-2 col-form-label\">\n    <strong>newSeats</strong>\n  </label>\n  <div class=\"col-sm-10\">\n    <input placeholder=\"seats\"\n           [(ngModel)]=\"newSeats\"\n           id=\"newSeats\"\n           class=\"form-control\">\n  </div>\n\n\n  <button class=\"btn btn-primary btn-block\" (click)=\"updateSection()\">\n    save updates for this section\n  </button>\n\n\n</div>\n\n<hr>\n\n<div *ngFor=\"let course of courses\">\n\n  <h3>Course: {{course.title}}</h3>\n  <ul class=\"list-group\">\n    <li *ngFor=\"let section of course.sections\" class=\"list-group-item\">\n      name : {{section.name}}\n      seats : {{section.seats}}\n      <button class=\"btn btn-danger float-right\" (click)=\"deleteSection(section._id)\">\n        delete\n      </button>\n      <button class=\"btn btn-primary float-right\" (click)=\"selectSection(section)\">\n        select to edit\n      </button>\n    </li>\n  </ul>\n\n\n\n  <button class=\"btn btn-success btn-block\" (click)=\"createSection(course.id)\">\n    add new sections for this course\n  </button>\n\n  <hr>\n</div>\n\n\n<div class=\"row float-right\">\n  <a  routerLink=\"/profile\"><h3>Profile</h3></a>\n  <a  routerLink=\"/home\"><h3>Home</h3></a>\n</div>\n"
 
 /***/ }),
 
@@ -104,10 +104,13 @@ var AdminPageComponent = /** @class */ (function () {
             .then(function () { return _this.findAllCourses(); });
     };
     AdminPageComponent.prototype.createSection = function (courseId) {
-        var _this = this;
-        this.sectionService
-            .createSection(this.sectionName, this.seats, courseId)
-            .then(function () { return _this.findAllCourses(); });
+        if (!this.sectionName) {
+            this.courseService.findCourseById(courseId)
+                .then(function (course) { return console.log(course); });
+        }
+        // this.sectionService
+        //   .createSection(this.sectionName, this.seats, courseId)
+        //   .then(() => this.findAllCourses());
     };
     AdminPageComponent.prototype.selectSection = function (section) {
         this.selectedSection = section;
@@ -1332,6 +1335,9 @@ var UserServiceClient = /** @class */ (function () {
         });
     };
     UserServiceClient.prototype.updateProfile = function (user) {
+        if (user.username === 'admin') {
+            user.role = 'admin';
+        }
         return fetch(this.USER_URL + '/profile', {
             method: 'put',
             credentials: 'include',

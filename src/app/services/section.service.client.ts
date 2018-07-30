@@ -25,7 +25,6 @@ export default class SectionServiceClient {
       seats: seats,
       courseId: courseId
     };
-
     return fetch(this.SECTION_URL.replace('CID', courseId), {
       method: 'post',
       body: JSON.stringify(section),

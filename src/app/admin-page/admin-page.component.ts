@@ -46,6 +46,15 @@ export class AdminPageComponent implements OnInit {
   }
 
   createSection(courseId) {
+    if (!this.sectionName) {
+      this.courseService.findCourseById(courseId)
+        .then(course => {
+          this.sectionService
+            .createSection(course.title + ' Section 1', this.seats, courseId)
+            .then(() => this.findAllCourses());
+        });
+      return;
+    }
     this.sectionService
       .createSection(this.sectionName, this.seats, courseId)
       .then(() => this.findAllCourses());
