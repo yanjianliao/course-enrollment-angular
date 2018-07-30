@@ -61,8 +61,8 @@
   <h3>Course: {{course.title}}</h3>
   <ul class="list-group">
     <li *ngFor="let section of course.sections" class="list-group-item">
-      name : {{section.name}}
-      seats : {{section.seats}}
+      <strong>name</strong> : {{section.name}}
+      <strong>seats</strong> : {{section.seats}}
       <button class="btn btn-danger float-right" (click)="deleteSection(section._id)">
         delete
       </button>

@@ -47,9 +47,9 @@ export default class UserServiceClient {
   }
 
   updateProfile(user) {
-    if (user.username === 'admin') {
-      user.role = 'admin';
-    }
+    // if (user.username === 'admin') {
+    //   user.role = 'admin';
+    // }
     return fetch(this.USER_URL + '/profile', {
       method: 'put',
       credentials: 'include',
