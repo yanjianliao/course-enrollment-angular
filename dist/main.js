@@ -357,7 +357,7 @@ var routing = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".card {\n  margin-top: 20px;\n}\n\na{\n  margin-left: 10px;\n}\n"
+module.exports = ".card {\n  margin-top: 20px;\n}\n"
 
 /***/ }),
 
@@ -368,7 +368,7 @@ module.exports = ".card {\n  margin-top: 20px;\n}\n\na{\n  margin-left: 10px;\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Course grid {{courses.length}} </h2>\n\n\n\n<div class=\"row\">\n  <div *ngFor=\"let course of courses\" class=\"col-sm-3\">\n    <div class=\"card\">\n      <div class=\"card-body\">\n        <h5 class=\"card-title\">{{course.title}}</h5>\n        <p class=\"card-text\">With supporting text below as a natural lead-in to additional content.</p>\n        <a routerLink=\"/course/{{course.id}}\" class=\"btn btn-primary\">\n          Contents\n        </a>\n        <a routerLink=\"/course/{{course.id}}/section\"\n           class=\"btn btn-primary\">Enroll</a>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n<div class=\"row float-right\">\n  <a  routerLink=\"/profile\"><h3>Profile</h3></a>\n  <a  routerLink=\"/home\"><h3>Home</h3></a>\n  <a routerLink=\"/login\"><h3>Login</h3></a>\n  <a routerLink=\"/register\"><h3>Register</h3></a>\n</div>\n\n"
+module.exports = "<h2>Course grid {{courses.length}} </h2>\n\n\n\n<div class=\"row\">\n  <div *ngFor=\"let course of courses\" class=\"col-sm-3\">\n    <div class=\"card\">\n      <div class=\"card-body\">\n        <h5 class=\"card-title\">{{course.title}}</h5>\n        <p class=\"card-text\">With supporting text below as a natural lead-in to additional content.</p>\n        <a routerLink=\"/course/{{course.id}}\" class=\"btn btn-success\">\n          Contents\n        </a>\n        <a routerLink=\"/course/{{course.id}}/section\"\n           class=\"btn btn-primary\">Enroll</a>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n<div class=\"row float-right\">\n  <a  routerLink=\"/profile\"><h3>Profile</h3></a>\n  <a  routerLink=\"/home\"><h3>Home</h3></a>\n  <a routerLink=\"/login\"><h3>Login</h3></a>\n  <a routerLink=\"/register\"><h3>Register</h3></a>\n</div>\n\n"
 
 /***/ }),
 
@@ -602,7 +602,7 @@ module.exports = "input {\n  margin: 10px;\n}\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n\n  <h1>Login</h1>\n\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"\n  />\n  <input [(ngModel)]=\"password\"\n         placeholder=\"password\"\n         class=\"form-control\"\n  />\n\n\n  <button (click)=\"login(username, password)\"\n          class=\"btn btn-success\"\n  >\n    Login\n  </button>\n\n</div>\n"
+module.exports = "<div class=\"container-fluid\">\n\n  <h1>Login</h1>\n\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"\n  />\n  <input [(ngModel)]=\"password\"\n         placeholder=\"password\"\n         class=\"form-control\"\n  />\n\n\n  <button (click)=\"login(username, password)\"\n          class=\"btn btn-success\"\n  >\n    Login\n  </button>\n  <div class=\"row float-right\">\n    <a  routerLink=\"/home\"><h3>Home</h3></a>\n    <a routerLink=\"/register\"><h3>Register</h3></a>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -940,7 +940,7 @@ module.exports = "input {\n  margin: 10px;\n}\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Register</h1>\n\n<input [(ngModel)]=\"username\"\n       placeholder=\"username\"\n       class=\"form-control\"\n/>\n<input [(ngModel)]=\"password\"\n       placeholder=\"password\"\n       class=\"form-control\"\n/>\n\n<input [(ngModel)]=\"password2\"\n       placeholder=\"password\"\n       class=\"form-control\"\n/>\n\n\n<button (click)=\"createUser()\"\n        class=\"btn btn-success\"\n>\n  Register\n</button>\n"
+module.exports = "<h1>Register</h1>\n\n<input [(ngModel)]=\"username\"\n       placeholder=\"username\"\n       class=\"form-control\"\n/>\n<input [(ngModel)]=\"password\"\n       placeholder=\"password\"\n       class=\"form-control\"\n/>\n\n<input [(ngModel)]=\"password2\"\n       placeholder=\"password\"\n       class=\"form-control\"\n/>\n\n\n<button (click)=\"createUser()\"\n        class=\"btn btn-success\"\n>\n  Register\n</button>\n<div class=\"row float-right\">\n  <a  routerLink=\"/home\"><h3>Home</h3></a>\n  <a routerLink=\"/login\"><h3>Login</h3></a>\n</div>\n"
 
 /***/ }),
 
