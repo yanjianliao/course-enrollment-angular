@@ -24,9 +24,14 @@ export class ProfileComponent implements OnInit {
   }
 
   loadProfile() {
+
     this.userService
       .profile()
       .then(user => {
+        if (user.error) {
+          this.router.navigate(['login']);
+          return;
+        }
         this.user = user;
       });
     this.sectionService

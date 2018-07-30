@@ -1,5 +1,11 @@
 <h2>
   White board
 </h2>
-
+<hr>
+<h3 *ngIf="courses.length != 0">Enrolled courses of this students: </h3>
+<h3 *ngIf="courses.length == 0">No Login User</h3>
+<div *ngFor="let course of courses">
+  <h4>title: {{course.title}}</h4>
+</div>
+<hr>
 <app-course-grid></app-course-grid>

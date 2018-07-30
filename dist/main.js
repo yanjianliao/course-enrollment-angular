@@ -157,7 +157,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <router-outlet></router-outlet>\n\n</div>\n\n"
+module.exports = "<div class=\"container\">\n  <router-outlet></router-outlet>\n</div>\n\n"
 
 /***/ }),
 
@@ -860,6 +860,10 @@ var ProfileComponent = /** @class */ (function () {
         this.userService
             .profile()
             .then(function (user) {
+            if (user.error) {
+                _this.router.navigate(['login']);
+                return;
+            }
             _this.user = user;
         });
         this.sectionService
@@ -1488,7 +1492,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>\n  White board\n</h2>\n\n<app-course-grid></app-course-grid>\n"
+module.exports = "<h2>\n  White board\n</h2>\n<hr>\n<h3 *ngIf=\"courses.length != 0\">Enrolled courses of this students: </h3>\n<h3 *ngIf=\"courses.length == 0\">No Login User</h3>\n<div *ngFor=\"let course of courses\">\n  <h4>title: {{course.title}}</h4>\n</div>\n<hr>\n<app-course-grid></app-course-grid>\n"
 
 /***/ }),
 
@@ -1503,6 +1507,10 @@ module.exports = "<h2>\n  White board\n</h2>\n\n<app-course-grid></app-course-gr
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WhiteBoardComponent", function() { return WhiteBoardComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
+/* harmony import */ var _services_section_service_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/section.service.client */ "./src/app/services/section.service.client.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var _services_course_service_client__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/course.service.client */ "./src/app/services/course.service.client.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1513,10 +1521,56 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
 var WhiteBoardComponent = /** @class */ (function () {
-    function WhiteBoardComponent() {
+    function WhiteBoardComponent(userService, sectionService, router, courseService) {
+        this.userService = userService;
+        this.sectionService = sectionService;
+        this.router = router;
+        this.courseService = courseService;
+        this.sections = [];
+        this.user = { error: undefined };
+        this.courses = [];
     }
     WhiteBoardComponent.prototype.ngOnInit = function () {
+        this.findCourses();
+    };
+    WhiteBoardComponent.prototype.findCourses = function () {
+        var _this = this;
+        this.userService
+            .profile()
+            .then(function (user) {
+            _this.user = user;
+        }).then(function () {
+            if (_this.user.error) {
+                return;
+            }
+            _this.sectionService
+                .findSectionForStudent()
+                .then(function (sections) { return _this.sections = sections; })
+                .then(function () {
+                // console.log(this.sections);
+                for (var i = 0; i < _this.sections.length; i++) {
+                    _this.courseService.findCourseById(_this.sections[i].section.courseId)
+                        .then(function (course) {
+                        var flag = false;
+                        for (var j = 0; j < _this.courses.length; j++) {
+                            // console.log(this.courses[j], course.title);
+                            if (_this.courses[j].title === course.title) {
+                                flag = true;
+                                break;
+                            }
+                        }
+                        if (!flag) {
+                            _this.courses.push(course);
+                        }
+                    });
+                }
+            });
+        });
     };
     WhiteBoardComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1524,7 +1578,10 @@ var WhiteBoardComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./white-board.component.html */ "./src/app/white-board/white-board.component.html"),
             styles: [__webpack_require__(/*! ./white-board.component.css */ "./src/app/white-board/white-board.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_services_user_service_client__WEBPACK_IMPORTED_MODULE_1__["default"],
+            _services_section_service_client__WEBPACK_IMPORTED_MODULE_2__["default"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
+            _services_course_service_client__WEBPACK_IMPORTED_MODULE_4__["default"]])
     ], WhiteBoardComponent);
     return WhiteBoardComponent;
 }());
