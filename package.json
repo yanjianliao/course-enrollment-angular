@@ -33,6 +33,8 @@
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
+    "@angular/animations": "^5.2.0",
+    "@angular/cli": "^6.1.1",
     "@angular-devkit/build-angular": "~0.7.0",
     "@angular/language-service": "^5.2.0",
     "@types/jasmine": "~2.8.3",
@@ -49,6 +51,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
+    "typescript": "^2.7.2",
     "tslint": "~5.9.1"
   },
   "engines": {
