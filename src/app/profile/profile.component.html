@@ -70,7 +70,8 @@
     <li *ngFor="let section of sections" class="list-group-item">
       <div class="row">
         <div class="col-8">
-          {{section.section.name}}
+          <a routerLink="/course/{{section.courseId}}/section">{{section.section.name}}</a>
+
         </div>
 
         <div class="col-4">
@@ -82,6 +83,13 @@
     </li>
 
 </ul>
+<hr>
+<h3 *ngIf="courses.length != 0">Enrolled courses: </h3>
+<h3 *ngIf="courses.length == 0">Not available</h3>
+<div *ngFor="let course of courses">
+  <a routerLink="/course/{{course.id}}/section"><h4>title: {{course.title}}</h4></a>
+</div>
+<hr>
 
 <button class="btn btn-primary btn-block "
         (click)="updateProfile()">
