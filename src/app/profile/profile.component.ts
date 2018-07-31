@@ -42,7 +42,7 @@ export class ProfileComponent implements OnInit {
       .then(sections => this.sections = sections)
       .then(
         () => {
-          // console.log(this.sections);
+          this.courses = [];
           for (let i = 0; i < this.sections.length; i++) {
             this.courseService.findCourseById(this.sections[i].section.courseId)
               .then(
