@@ -88,15 +88,33 @@ export class ProfileComponent implements OnInit {
       student: enrollment.student,
       section: enrollment.section._id
     };
-    this.sectionService
-      .dropSection(temp)
-      .then(() => {
-        alert('Dropped!');
-        this.sectionService
-          .findSectionForStudent()
-          .then(sections => this.sections = sections);
-      });
 
+    this.sectionService
+      .findSectionForStudent()
+      .then(sections => this.sections = sections)
+      .then(
+        () => {
+          // console.log(this.sections);
+          for (let i = 0; i < this.sections.length; i++) {
+            this.courseService.findCourseById(this.sections[i].section.courseId)
+              .then(
+                course => {
+                  let flag = false;
+                  for (let j = 0; j < this.courses.length; j++) {
+                    // console.log(this.courses[j], course.title);
+                    if (this.courses[j].title === course.title) {
+                      flag = true;
+                      break;
+                    }
+                  }
+                  if (!flag) {
+                    this.courses.push(course);
+                  }
+                }
+              );
+          }
+        }
+      );
   }
 
   deleteProfile() {
